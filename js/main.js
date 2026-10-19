@@ -163,40 +163,40 @@ async function handleFormSubmit(e, target) {
   const dateString = formatApplyDate(new Date());
   const keyword = getSearchKeyword();
 
-  const mailSubject = `[상담신청] ${name} - ${company} - ${field}`;
-
   const formData = new FormData();
-  formData.append('_subject', mailSubject);
-  formData.append('_template', 'basic');
-  formData.append('_captcha', 'false');
-  formData.append('신청 일시', dateString);
-  formData.append('성함', name);
-  formData.append('회사명', company);
-  formData.append('연락처', phone);
-  formData.append('이메일', email);
-  formData.append('사업분야', field);
-  formData.append('문의 내용', msg);
-  formData.append('포털 검색 키워드', keyword || '확인되지 않음');
+  formData.append('name', name);
+  formData.append('company', company);
+  formData.append('phone', phone);
+  formData.append('email', email);
+  formData.append('field', field);
+  formData.append('message', msg);
+  formData.append('keyword', keyword || '확인되지 않음');
+  formData.append('submitted_at', dateString);
 
   const fileInput = document.getElementById(prefix + 'file');
-  if (fileInput && fileInput.files && fileInput.files.length > 0) {
-    Array.from(fileInput.files).forEach((f, idx) => {
-      formData.append(`첨부파일_${idx + 1}`, f, f.name);
-    });
+  const files = fileInput && fileInput.files ? Array.from(fileInput.files) : [];
+  const totalBytes = files.reduce((sum, file) => sum + file.size, 0);
+  if (totalBytes > 5 * 1024 * 1024) {
+    alert('첨부파일의 합계 크기는 5MB 이하로 제한됩니다.');
+    return;
   }
-
+  for (const file of files) {
+    formData.append('attachments', file, file.name);
+  }
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.textContent = '전송 중...';
   }
 
   try {
-    const res = await fetch('https://formsubmit.co/ajax/dnps@st-group1.com', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: formData
-    });
-    if (!res.ok) throw new Error('전송 실패');
+    const res = await fetch('/api/contact', {
+  method: 'POST',
+  body: formData
+});
+const result = await res.json();
+if (!res.ok || result.success !== true) {
+  throw new Error(result.message || '전송 실패');
+}
 
     alert('상담 신청이 정상적으로 접수되었습니다. 빠른 시일 내에 담당 엔지니어가 연락드리겠습니다.');
     if (typeof gtag_report_conversion === 'function') {
