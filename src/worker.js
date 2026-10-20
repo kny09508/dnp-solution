@@ -45,7 +45,13 @@ export default {
     }
 
     if (request.method !== "POST") return json({ success: false, message: "POST 요청만 허용됩니다." }, 405);
-    if (!env.RESEND_API_KEY) return json({ success: false, code: "missing_api_key", message: "메일 발송 설정이 완료되지 않았습니다." }, 503);
+    if (!env.RESEND_API_KEY) {
+      // [임시 진단] 원인 확인 후 debug 필드는 삭제할 것. 값은 노출하지 않고 바인딩 '이름'만 반환한다.
+      const names = Object.keys(env);
+      console.error("RESEND_API_KEY missing. bindings:", names.join(","), "host:", url.hostname);
+      return json({ success: false, code: "missing_api_key", message: "메일 발송 설정이 완료되지 않았습니다.",
+        debug: { bindings: names, host: url.hostname } }, 503);
+    }
 
     // Browser-origin check. Also blocks most cross-site scripted submissions.
     const origin = request.headers.get("Origin");
