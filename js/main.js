@@ -189,24 +189,30 @@ async function handleFormSubmit(e, target) {
   }
 
   try {
-    const res = await fetch('/api/contact', {
-  method: 'POST',
-  body: formData
-});
-const result = await res.json();
-if (!res.ok || result.success !== true) {
-  throw new Error(result.message || '전송 실패');
-}
+      const res = await fetch('/api/contact', { method: 'POST', body: formData });
+      // 서버가 JSON이 아닌 응답(404 HTML 등)을 주어도 원인을 알 수 있도록 안전하게 파싱
+      let result = {};
+      try { result = JSON.parse(await res.text()); } catch (_) { /* non-JSON */ }
+      if (!res.ok || result.success !== true) {
+        const e = new Error(result.message || '서버가 올바른 응답을 주지 않았습니다.');
+        e.status = res.status;
+        e.code = result.code || '';
+        throw e;
+      }
 
-    alert('상담 신청이 정상적으로 접수되었습니다. 빠른 시일 내에 담당 엔지니어가 연락드리겠습니다.');
+      alert('상담 신청이 정상적으로 접수되었습니다. 빠른 시일 내에 담당 엔지니어가 연락드리겠습니다.');
     if (typeof gtag_report_conversion === 'function') {
       gtag_report_conversion();
     }
     formEl.reset();
     if (isModal && modal) modal.classList.remove('open');
   } catch (err) {
-    alert('메일 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주시거나 전화(070-5015-2189)로 문의해주세요.');
-  } finally {
+      console.error('[contact] 전송 실패', err.status || '', err.code || '', err);
+      const detail = err.status
+        ? '\n\n사유: ' + err.message + ' (HTTP ' + err.status + (err.code ? ', ' + err.code : '') + ')'
+        : '\n\n사유: 서버에 연결할 수 없습니다. 네트워크 상태를 확인해 주세요.';
+      alert('메일 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주시거나 전화(070-5015-2189)로 문의해주세요.' + detail);
+    } finally {
     if (submitBtn) {
       submitBtn.disabled = false;
       submitBtn.textContent = originalBtnText;
