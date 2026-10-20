@@ -45,7 +45,7 @@ export default {
     }
 
     if (request.method !== "POST") return json({ success: false, message: "POST 요청만 허용됩니다." }, 405);
-    if (!env.RESEND_API_KEY) return json({ success: false, message: "메일 발송 설정이 완료되지 않았습니다." }, 503);
+    if (!env.RESEND_API_KEY) return json({ success: false, code: "missing_api_key", message: "메일 발송 설정이 완료되지 않았습니다." }, 503);
 
     // Browser-origin check. Also blocks most cross-site scripted submissions.
     const origin = request.headers.get("Origin");
@@ -53,7 +53,7 @@ export default {
     let originUrl;
     try { originUrl = new URL(origin); } catch { return json({ success: false, message: "잘못된 요청 출처입니다." }, 403); }
     if (originUrl.protocol !== "https:" || !ALLOWED_HOSTS.has(originUrl.hostname)) {
-      return json({ success: false, message: "허용되지 않은 요청 출처입니다." }, 403);
+      return json({ success: false, code: "origin_not_allowed", message: "허용되지 않은 요청 출처입니다." }, 403);
     }
 
     const contentLength = Number(request.headers.get("content-length") || 0);
@@ -115,8 +115,14 @@ export default {
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.id) {
-        console.error("Resend request failed", response.status, result);
-        return json({ success: false, message: "메일 발송 요청이 실패했습니다. 잠시 후 다시 시도해 주세요." }, 502);
+        console.error("Resend request failed", response.status, JSON.stringify(result));
+        // 401/403: API 키가 틀렸거나 발신 도메인(dnp-solution.com)이 Resend에서 인증되지 않은 경우
+        if (response.status === 401 || response.status === 403) {
+          return json({ success: false, code: "resend_auth_" + response.status,
+            message: "메일 발송 서비스 설정(API 키 또는 발신 도메인 인증)에 문제가 있습니다." }, 502);
+        }
+        return json({ success: false, code: "resend_" + response.status,
+          message: "메일 발송 요청이 실패했습니다. 잠시 후 다시 시도해 주세요." }, 502);
       }
       console.log("Resend accepted message", result.id);
       return json({ success: true, message: "상담 신청이 접수되었습니다." });
