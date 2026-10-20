@@ -1467,6 +1467,7 @@ h1,h2,h3,h4{font-family:var(--font-d); font-weight:700; letter-spacing:-0.02em; 
         const e = new Error(result.message || '서버가 올바른 응답을 주지 않았습니다.');
         e.status = res.status;
         e.code = result.code || '';
+        e.debug = result.debug || null;
         throw e;
       }
 
@@ -1479,7 +1480,7 @@ h1,h2,h3,h4{font-family:var(--font-d); font-weight:700; letter-spacing:-0.02em; 
     } catch (err) {
       console.error('[contact] 전송 실패', err.status || '', err.code || '', err);
       const detail = err.status
-        ? '\n\n사유: ' + err.message + ' (HTTP ' + err.status + (err.code ? ', ' + err.code : '') + ')'
+        ? '\n\n사유: ' + err.message + ' (HTTP ' + err.status + (err.code ? ', ' + err.code : '') + ')' + (err.debug ? '\n[진단] ' + JSON.stringify(err.debug) : '')
         : '\n\n사유: 서버에 연결할 수 없습니다. 네트워크 상태를 확인해 주세요.';
       alert('메일 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주시거나 전화(070-5015-2189)로 문의해주세요.' + detail);
     } finally {
