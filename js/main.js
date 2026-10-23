@@ -159,6 +159,8 @@ async function handleFormSubmit(e, target) {
   const email = document.getElementById(prefix + 'email').value;
   const field = document.getElementById(prefix + 'field').value;
   const msg = document.getElementById(prefix + 'msg').value;
+  const position = (document.getElementById(prefix + 'position')?.value || '').trim();
+  const address = (document.getElementById(prefix + 'address')?.value || '').trim();
 
   const dateString = formatApplyDate(new Date());
   const keyword = getSearchKeyword();
@@ -168,6 +170,8 @@ async function handleFormSubmit(e, target) {
   formData.append('company', company);
   formData.append('phone', phone);
   formData.append('email', email);
+  formData.append('position', position);
+  formData.append('address', address);
   formData.append('field', field);
   formData.append('message', msg);
   formData.append('keyword', keyword || '확인되지 않음');

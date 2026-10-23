@@ -69,6 +69,8 @@ export default {
       const form = await request.formData();
       const name = safeText(form.get("name"), 100);
       const company = safeText(form.get("company"), 150);
+      const position = safeText(form.get("position"), 100);
+      const address = safeText(form.get("address"), 300);
       const phone = safeText(form.get("phone"), 60);
       const email = safeText(form.get("email"), 254);
       const field = safeText(form.get("field"), 150);
@@ -96,8 +98,9 @@ export default {
 
       const rows = [
         ["신청 일시", submittedAt || new Date().toISOString()],
-        ["성함", name], ["회사명", company], ["연락처", phone],
-        ["이메일", email], ["사업분야", field], ["문의 내용", message],
+        ["성함", name], ["회사명", company], ["직급", position || "미입력"], ["연락처", phone],
+        ["이메일", email], ["주소 (미팅 시 방문 주소)", address || "미입력"],
+        ["사업분야", field], ["문의 내용", message],
         ["포털 검색 키워드", keyword || "확인되지 않음"]
       ];
       const text = rows.map(([key, value]) => `${key}: ${value}`).join("\n");
