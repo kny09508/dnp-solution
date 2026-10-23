@@ -170,6 +170,8 @@ function gtag_report_conversion(url) {
       <input type="tel" class="q-input" id="q-phone" placeholder="연락처" required>
       <input type="email" class="q-input" id="q-email" placeholder="이메일" required>
     </div>
+    <input type="text" class="q-input" id="q-position" placeholder="직급">
+    <input type="text" class="q-input" id="q-address" placeholder="주소 (미팅 시 방문 주소)">
 
     <select class="q-input" id="q-field" required>
       <option value="" disabled >문의 분야 선택</option>
@@ -184,7 +186,7 @@ function gtag_report_conversion(url) {
       <option value="기타">기타</option>
     </select>
 
-    <textarea class="q-input q-textarea" id="q-msg" placeholder="문의 내용을 자세히 적어주세요." required></textarea>
+    <textarea class="q-input q-textarea" id="q-msg" placeholder="문의 내용을 자세히 작성해주세요." required></textarea>
     <div style="margin-bottom:8px;">
       <label style="display:block; font-size:11px; font-weight:600; color:var(--fog-soft); margin-bottom:5px;">첨부 파일 (선택)</label>
       <input type="file" id="q-file" multiple style="width:100%; border:1px solid var(--line); border-radius:7px; padding:7px 10px; background:var(--paper-alt); font-size:11px;">
@@ -320,6 +322,10 @@ function gtag_report_conversion(url) {
           <input type="email" id="f-email" placeholder="이메일" required>
         </div>
         <div class="footer-form-row">
+          <input type="text" id="f-position" placeholder="직급">
+          <input type="text" id="f-address" placeholder="주소 (미팅 시 방문 주소)">
+        </div>
+        <div class="footer-form-row">
           <select id="f-field" required>
             <option value="" disabled >문의 분야 선택</option>
             <option value="PLC 제어반" selected>PLC 제어반</option>
@@ -334,7 +340,7 @@ function gtag_report_conversion(url) {
           </select>
           <input type="file" id="f-file" multiple>
         </div>
-        <textarea id="f-msg" placeholder="문의 내용을 자세히 적어주세요." required></textarea>
+        <textarea id="f-msg" placeholder="문의 내용을 자세히 작성해주세요." required></textarea>
         <button type="submit" class="footer-form-submit">상담 신청하기</button>
       </form>
     </div>
@@ -397,6 +403,17 @@ function gtag_report_conversion(url) {
           <input type="email" id="m-email" placeholder="example@company.com" required>
         </div>
       </div>
+      
+      <div class="form-row two">
+        <div>
+          <label>직급</label>
+          <input type="text" id="m-position" placeholder="직급">
+        </div>
+        <div>
+          <label>주소 <span style="font-weight:400; color:var(--fog);">(미팅 시 방문 주소)</span></label>
+          <input type="text" id="m-address" placeholder="미팅 시 방문 주소">
+        </div>
+      </div>
 
       <div class="form-row">
         <label>문의 분야 선택</label>
@@ -416,7 +433,7 @@ function gtag_report_conversion(url) {
 
       <div class="form-row">
         <label>문의 내용</label>
-        <textarea id="m-msg" class="q-textarea" placeholder="현재 상황과 요청사항을 자세히 적어주세요." required></textarea>
+        <textarea id="m-msg" class="q-textarea" placeholder="현재 상황과 요청사항을 자세히 작성해주세요." required></textarea>
       </div>
 
       <div class="form-row">
