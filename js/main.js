@@ -140,6 +140,33 @@ function formatApplyDate(d) {
   return `${year}. ${month}. ${day}. ${ampm} ${hour}:${min}:${sec}`;
 }
 
+// ============ 연락처 자동 하이픈 (3-4-4: 010-1234-5678) ============
+// 숫자 3자리 입력 시 '-', 이어서 4자리 입력 시 '-'가 자동으로 붙습니다. (모든 견적 문의 폼의 연락처 입력란)
+function formatPhoneDigits(digits, keepTrailingHyphen) {
+  const a = digits.slice(0, 3), b = digits.slice(3, 7), c = digits.slice(7, 11);
+  let out = a;
+  if (digits.length > 3 || (digits.length === 3 && keepTrailingHyphen)) out += '-' + b;
+  if (digits.length > 7 || (digits.length === 7 && keepTrailingHyphen)) out += '-' + c;
+  return out;
+}
+document.addEventListener('input', (e) => {
+  const el = e.target;
+  if (!(el instanceof HTMLInputElement) || el.type !== 'tel') return;
+  const isDeleting = !!(e.inputType && e.inputType.startsWith('delete'));
+  const caret = el.selectionStart;
+  const digitsBeforeCaret = el.value.slice(0, caret == null ? el.value.length : caret).replace(/\D/g, '').length;
+  const digits = el.value.replace(/\D/g, '').slice(0, 11);
+  const formatted = formatPhoneDigits(digits, !isDeleting);
+  if (formatted === el.value) return;
+  el.value = formatted;
+  // 숫자를 중간에 수정한 경우에만 커서 위치 복원 (끝에서 입력 중이면 자동 하이픈 뒤 끝에 위치)
+  if (caret != null && digitsBeforeCaret < digits.length) {
+    let pos = 0, seen = 0;
+    while (pos < formatted.length && seen < digitsBeforeCaret) { if (/\d/.test(formatted[pos])) seen++; pos++; }
+    try { el.setSelectionRange(pos, pos); } catch (_) { /* noop */ }
+  }
+});
+
 async function handleFormSubmit(e, target) {
   e.preventDefault();
   // 기존 호출(boolean)과 새 호출(prefix 문자열) 모두 지원
