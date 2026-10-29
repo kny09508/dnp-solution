@@ -306,6 +306,48 @@
 .lineup-card li{font-size:13.5px; color:var(--fog-soft); padding-left:14px; position:relative;}
 .lineup-card li::before{content:"·"; position:absolute; left:0; color:var(--blue); font-weight:900;}
 
+/* ============ LED 적용 사례 ============ */
+.case-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; margin-top:24px;}
+@media(max-width:900px){.case-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.case-grid{grid-template-columns:1fr;}}
+.case-card{
+  background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden;
+  display:flex; flex-direction:column;
+  transition: opacity .7s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.case-card[hidden]{display:none;}
+.case-card:nth-child(3n+2){transition-delay:.08s;}
+.case-card:nth-child(3n){transition-delay:.16s;}
+.case-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 24px 44px -20px rgba(18,22,31,0.18);
+  border-color: rgba(36,83,235,0.3);
+}
+.case-card .cs-media{
+  aspect-ratio:4 / 3; background:#fff; padding:18px;
+  display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid var(--line); overflow:hidden;
+}
+.case-card .cs-media img{
+  display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;
+  transition: transform .6s var(--ease);
+}
+.case-card:hover .cs-media img{ transform: scale(1.05); }
+.case-card .cs-body{padding:22px 24px 26px; display:flex; flex-direction:column; flex:1;}
+.case-card .cs-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+.case-card .cs-num{font-family:var(--font-m); font-weight:900; font-size:22px; color:var(--blue-soft); -webkit-text-stroke:1.3px var(--blue); color:transparent; transition: color .3s ease, -webkit-text-stroke .3s ease;}
+.case-card:hover .cs-num{ color:var(--blue); -webkit-text-stroke:0px transparent; }
+.case-card .cs-badge{
+  font-family:var(--font-m); font-weight:700; font-size:10.5px; color:var(--blue); letter-spacing:.08em;
+  background:var(--blue-soft); padding:5px 10px; border-radius:999px;
+  transition: background .3s ease, color .3s ease;
+}
+.case-card:hover .cs-badge{ background:var(--blue); color:#fff; }
+.case-card h4{font-size:16px; margin-bottom:10px; line-height:1.4;}
+.case-card p{font-size:13.5px; color:var(--fog-soft); line-height:1.7;}
+.case-more{text-align:center; margin-top:44px;}
+.case-more .case-more-count{font-family:var(--font-m); font-weight:700; margin-left:4px;}
+
 /* ============ 하단 CTA 밴드 ============ */
 .detail-cta-band{
   background:var(--paper-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
