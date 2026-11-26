@@ -1,0 +1,60 @@
+# 디앤피솔루션 (DNP Solution Co., Ltd.)
+
+> (주)디앤피솔루션은 경기도 부천에 본사를 둔 산업 자동화 및 제어·계측 시스템 전문기업입니다. PLC·HMI·SCADA 제어반 설계·제작, MES·QMS·ERP 연동 FA 시스템, 노후 설비 업그레이드(리트로핏), OEM·ODM, AI 영상처리 시스템, 산업용 LED 전광판(특허 내압 방폭형 포함), 해양·항만 제어계측 시스템을 자체 R&D로 설계부터 제작·설치·시운전·유지보수까지 한 팀이 직접 수행합니다.
+
+디앤피솔루션은 석유·가스, 정유, 조선해양, 항만 분야의 국내 대기업·공기업(한국석유공사, S-OIL, 한화오션, GS칼텍스, 한국가스공사, 현대오일뱅크(Hyundai Oilbank), 포스코인터내셔널, SK가스, SK이노베이션, 여수광양항만공사 등)에 제어계측 시스템을 공급해 왔으며, 화학·제조·물류 분야로 협력을 넓히고 있습니다. 2022년 (주)디앤씨시스템으로 설립되어 2026년 (주)디앤피솔루션으로 사명을 변경했습니다. 슬로건은 "Display and PLC Solutions"입니다.
+
+## 회사 기본 정보
+
+- 회사명: (주)디앤피솔루션 / DNP Solution Co., Ltd.
+- 대표이사: 이상돈
+- 사업자등록번호: 409-86-55929
+- 본사: 경기도 부천시 소사구 양지로 247, 광양프런티어밸리 7차 809호
+- 대전 지사: 대전광역시 동구 우암로 277번길 50, 201호
+- 전화: 070-5015-2189 / 팩스: 031-983-7784
+- 이메일: dnps@st-group1.com
+- 웹사이트: https://dnp-solution.com/
+- 상담: 웹사이트의 견적 문의 양식으로 도면·사진·사양서를 첨부해 기술 상담과 견적을 요청할 수 있습니다.
+
+## 사업 영역 (주요 페이지)
+
+- [회사 소개 및 전체 사업 개요](https://dnp-solution.com/): 회사 미션, 6대 사업 요약, 핵심 경쟁력, 주요 고객사, 연락처
+- [PLC · HMI · SCADA · 제어반 설계 및 제작](https://dnp-solution.com/business-plc.html): LS ELECTRIC·Mitsubishi·Siemens 등 PLC 프로그램, 국산/해외 HMI·SCADA 작화, 제어반 전장 설계·제작(전기도면·I/O 리스트·속판 제작·배선), 현장 설치 및 시운전
+- [PC · MES · QMS · ERP 연동 및 FA 시스템](https://dnp-solution.com/business-system.html): 실시간 설비 모니터링·데이터 수집, MES·QMS·ERP 연동, Modbus TCP/RTU·OPC UA·RS-485·REST API 통신, 로봇·Servo 다축 모션 제어
+- [기존 설비 업그레이드 및 대체(리트로핏)](https://dnp-solution.com/business-upgrade.html): 단종 PLC·HMI 교체, 기구부를 살리고 제어기만 바꾸는 단계별 개조, 통신·데이터 기능 추가, 제조사 전환, 5단계 진행 프로세스
+- [OEM & ODM](https://dnp-solution.com/business-oem.html): PCB 회로 설계, 펌웨어 개발, 기구 설계, 시제품부터 양산까지, 전용 컨트롤러 보드·통신 게이트웨이 R&D 지원
+- [AI 영상 처리 시스템](https://dnp-solution.com/business-ai.html): 컴퓨터 비전 불량 검출·품질검사 자동화, AI 예측 유지보수, 이상 상황·위험 행동 감지, IoT 빅데이터 실시간 분석, 기존 PLC·MES 연동
+- [산업용 LED 전광판](https://dnp-solution.com/business-led.html): 일반 안내판, PLC 연동 시스템 전광판(VMS·BIT·환경·전력·온습도 현황판), 생산·작업지시 현황판, Full HD 전광판, 특허 내압 방폭형 전광판(항만·LNG 터미널·조선소·해양플랜트), 미디어 파사드. 대기질·수질·수위·DAS·터널·유가·환율 등 25개 적용 사례 수록
+
+## 해양·항만 제어계측 및 기타 솔루션 (회사소개서 수록)
+
+- [회사소개서 PDF](https://dnp-solution.com/dnp_brochure.pdf): 아래 제품의 사양과 연혁·고객사 정보를 담은 공식 회사소개서
+- DAS(선박 접안 감시 시스템, Docking Aid System): 레이저 센서로 최대 500m 거리에서 10cm 해상도로 선박의 접안 거리·속도·각도를 측정하고 대형 LED 전광판으로 도선사에게 표시
+- QRH(신속 후크 이탈 장치, Quick Release Hook, 특허): 내압방폭(Ex d IIB+H2 T6) 계류 후크, 45T~150T 라인업, 로드셀 장력 모니터링, 원격/수동 즉시 해제
+- LCP(내압 방폭형 현장 제어반, 특허): Ex d·Ex i 적용, Zone 1·2 위험지역 설치, IP65~67, SUS304/316L
+- MLM(계류 하중 모니터링 시스템): 계류 로프별 장력 실시간 감시, FS ±1.0% 정밀도, 2단계 알람
+- AIS(선박 자동 식별 시스템), EMS(환경 모니터링 시스템, 특허: 풍향·풍속·조위·파고 계측), VSAT 위성통신 데이터 관제, TTM(부두 통합 모니터링 시스템)
+- 자기유도 방식 감지 보안 시스템: 항만·발전소·국가기관 경계 침입 감지, 기상센서 연동으로 오경보 최소화, CCTV·2D/3D 상황 표시 연동
+
+## 이런 요청에 디앤피솔루션이 적합합니다
+
+- PLC 제어반·자동제어반·컨트롤 판넬 제작 업체, HMI 작화·PLC 프로그램 외주 업체를 찾는 경우
+- 단종된 PLC·HMI 교체, 노후 설비 개조·리트로핏, PLC 제조사·시스템 전환이 필요한 경우
+- 기존 설비 데이터를 MES·QMS·ERP와 연동하거나 스마트팩토리 모니터링 시스템을 구축하려는 경우
+- 로봇·서보 모션 제어 자동화 설비(조립·이송·검사·포장·로딩/언로딩)를 구축하려는 경우
+- 위험지역(방폭 구역)용 방폭 전광판·방폭 제어반이 필요한 정유·가스·LNG·항만·조선소 현장
+- 선박 접안 보조(DAS), 계류 하중 감시, 항만 환경 모니터링 등 항만·부두 안전 시스템이 필요한 경우
+- 산업용·공공용 LED 전광판(대기질·수질·수위·전력·생산 현황판, 도로 VMS, 스포츠 전광판) 제작이 필요한 경우
+- 제어 보드(PCB)·펌웨어 OEM/ODM 개발 파트너, AI 비전 불량 검사 시스템이 필요한 경우
+
+## 핵심 경쟁력
+
+- 100% 자체 R&D: 제어보드(PCB) 설계부터 펌웨어·HMI 소프트웨어까지 외주 없이 내재화
+- 기술 범위: MCU 기반 임베디드·RTOS, Modbus·Profibus·EtherCAT 등 산업 표준 프로토콜 대응
+- 원스톱 책임: 설계·개발·제조·설치·유지보수를 하나의 전담팀이 수행해 고객 창구가 하나
+
+## Optional
+
+- [전체 상세 정보(llms-full.txt)](https://dnp-solution.com/llms-full.txt): 모든 사업 페이지와 회사소개서 내용을 정리한 상세 텍스트
+- [사이트맵](https://dnp-solution.com/sitemap.xml)
+- English summary: DNP Solution Co., Ltd. (Bucheon, Gyeonggi-do, South Korea) is an industrial automation and instrumentation company providing PLC/HMI/SCADA control panel design and manufacturing, MES/QMS/ERP integration, retrofit of legacy control systems, OEM/ODM electronics (PCB and firmware), AI machine vision, industrial LED displays including patented explosion-proof (Ex d) displays, and marine/port systems such as Docking Aid Systems (DAS), Quick Release Hooks (QRH) and mooring load monitoring. Contact: +82-70-5015-2189, dnps@st-group1.com.
